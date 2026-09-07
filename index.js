@@ -72,13 +72,19 @@ if (config.discord.enabled) {
   const { createDiscord } = require('./lib/discord');
   discord = createDiscord({ token: config.discord.token, channelId: config.discord.channelId }, {
     onCommand: (sub, arg, reply) => {
-      if (sub === 'on') { reply(mapper.start(arg || config.mapping.mode)); }
+      if (sub === 'on') {
+        // Accept `!map on box 1000 1000 -1000 -1000` or `box:1000,1000,-1000,-1000`.
+        let mode = arg || config.mapping.mode;
+        const bm = mode.match(/^box[:\s]+(-?\d+)[,\s]+(-?\d+)[,\s]+(-?\d+)[,\s]+(-?\d+)/i);
+        if (bm) mode = `box:${bm[1]},${bm[2]},${bm[3]},${bm[4]}`;
+        reply(mapper.start(mode));
+      }
       else if (sub === 'off') { reply(mapper.stop()); }
       else if (sub === 'status') {
         const s = mapper.status();
         reply(`state=${s.state} mode=${s.mode} active=${s.active} covered=${s.covered}/${s.waypoints} tilesThisSession=${s.tilesThisSession} pos=${s.pos ? `${s.pos.x},${s.pos.z}` : '?'}${s.lastError ? ` lastError=${s.lastError}` : ''}`);
       } else {
-        reply('commands: `!map on [mode]`, `!map off`, `!map status`  (modes: spawn | ring | ring-nw|ne|se|sw | north/south/east/west/ne/nw/se/sw | rotate)');
+        reply('commands: `!map on [mode]`, `!map off`, `!map status`\nmodes: spawn | ring | ring-nw|ne|se|sw | north/south/east/west/ne/nw/se/sw | rotate | box\nbox example: `!map on box 1000 1000 -1000 -1000` (maps that square)');
       }
     },
   });

@@ -101,7 +101,8 @@ if present.
 | `server.host` / `port` / `version` | Server address and protocol version. |
 | `server.directConnect` | `false` for 6b6t (does the proxy-lobby → portal walk). `true` for a normal server where you spawn straight onto the main world. |
 | `server.lobbyBox` | *(optional)* `{minX,maxX,minZ,maxZ}` of the proxy lobby if your server's differs from 6b6t's. |
-| `mapping.mode` | What to map (see **Modes** below). |
+| `mapping.mode` | What to map (see **Modes** below). Use `"box"` to map a custom rectangle. |
+| `mapping.box` | For `mode: "box"` — the rectangle, `{x1,z1,x2,z2}` (two opposite corners). |
 | `mapping.homeName` | The `/home` name of your launch platform. |
 | `mapping.autoStart` | Start mapping automatically on connect (good for a VPS). |
 | `output.dir` | Where tiles + `manifest.json` are written. |
@@ -145,6 +146,14 @@ Modes: `spawn`, `ring`, `ring-nw|ne|se|sw`, `north|south|east|west|ne|nw|se|sw`,
 
 ## Modes
 
+- **`box` — map a rectangle you define.** The most direct option: give two opposite
+  corners and it grid-fills that square, from the centre outward, flying direct (no
+  spawn keep-out). Two ways to set it:
+  - **Config:** `"mode": "box"` with `"box": { "x1": 1000, "z1": 1000, "x2": -1000, "z2": -1000 }`.
+  - **Discord:** `!map on box 1000 1000 -1000 -1000` (or `!map on box:1000,1000,-1000,-1000`).
+
+  It launches from your `/home` and maps the box wherever it is — near spawn or far
+  out. (Each side is capped at ~80k blocks to keep it responsive.)
 - **`ring`** — fill the ±10k box around spawn, skipping the dodgy centre. The main
   "map as much of spawn as possible" mode.
 - **`ring-nw` / `ring-ne` / `ring-se` / `ring-sw`** — one quadrant only. Set a

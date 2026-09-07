@@ -13,6 +13,7 @@
   },
   "mapping": {
     "mode": "ring",
+    "box": { "x1": 1000, "z1": 1000, "x2": -1000, "z2": -1000 },
     "homeName": "spawn",
     "autoStart": true
   },
