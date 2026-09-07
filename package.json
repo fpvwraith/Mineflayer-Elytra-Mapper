@@ -1,0 +1,27 @@
+{
+  "name": "argus-mapper",
+  "version": "1.0.0",
+  "description": "Standalone, self-hostable autonomous elytra terrain mapper for 6b6t-style anarchy servers. Flies your account around spawn, renders the terrain to PNG tiles, and contributes them to an ARGUS community map.",
+  "main": "index.js",
+  "bin": {
+    "argus-mapper": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "upload": "node upload.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "mineflayer": "^4.38.0",
+    "mineflayer-elytrafly": "^1.4.8",
+    "pngjs": "^7.0.0",
+    "vec3": "^0.1.10"
+  },
+  "optionalDependencies": {
+    "discord.js": "^14.16.3"
+  },
+  "license": "MIT",
+  "keywords": ["minecraft", "mineflayer", "6b6t", "anarchy", "map", "elytra", "bot", "argus"]
+}

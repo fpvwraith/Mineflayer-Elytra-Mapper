@@ -1,0 +1,13 @@
+# Secrets / per-user config — NEVER commit these
+config.json
+.env
+auth_cache/
+
+# Mapper output + state
+output/
+mapper-state.json
+*.log
+
+# Node
+node_modules/
+npm-debug.log*

@@ -1,0 +1,32 @@
+{
+  "account": {
+    "auth": "offline",
+    "username": "YourBotAccountName",
+    "loginPassword": "",
+    "profilesFolder": "./auth_cache"
+  },
+  "server": {
+    "host": "mc.6b6t.org",
+    "port": 25565,
+    "version": "1.21.11",
+    "directConnect": false
+  },
+  "mapping": {
+    "mode": "ring",
+    "homeName": "spawn",
+    "autoStart": true
+  },
+  "output": {
+    "dir": "./output"
+  },
+  "discord": {
+    "enabled": false,
+    "token": "",
+    "channelId": ""
+  },
+  "upload": {
+    "argusUrl": "https://map.argus.tools",
+    "token": "",
+    "label": "ARGUS Mapper"
+  }
+}
