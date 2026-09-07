@@ -136,11 +136,12 @@ Set `discord.enabled: true` with your **own** bot token and a channel id. In tha
 channel:
 
 - `!map on [mode]` — start (or switch) mapping.
+- `!map on box 1000 1000 -1000 -1000` — map that rectangle (two opposite corners).
 - `!map off` — stop.
 - `!map status` — current state, coverage, position.
 
 Modes: `spawn`, `ring`, `ring-nw|ne|se|sw`, `north|south|east|west|ne|nw|se|sw`,
-`rotate`.
+`rotate`, `box` (see **Modes** below).
 
 ---
 
