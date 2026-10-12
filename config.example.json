@@ -9,25 +9,61 @@
     "host": "mc.6b6t.org",
     "port": 25565,
     "version": "1.21.11",
-    "directConnect": false
+    "directConnect": false,
+    "viewDistance": null
   },
   "mapping": {
-    "mode": "ring",
-    "box": { "x1": 1000, "z1": 1000, "x2": -1000, "z2": -1000 },
+    "mode": "box",
+    "box": {
+      "x1": 20000,
+      "z1": 20000,
+      "x2": 24000,
+      "z2": 24000
+    },
+    "boxes": [],
     "homeName": "spawn",
-    "autoStart": true
+    "autoStart": true,
+    "noHomeRadius": 5000,
+    "homeCooldownSec": 315,
+    "neededLimit": 40,
+    "neededRefreshMin": 30,
+    "skipSpawnRegions": true,
+    "neededUrl": "https://map.argus.tools"
+  },
+  "limits": {
+    "maxAbsBlock": 150000
   },
   "output": {
-    "dir": "./output"
+    "dir": "./output",
+    "dimension": "overworld",
+    "regions": true,
+    "tiles": false,
+    "flushIdleSec": 60,
+    "evictIdleSec": 300
+  },
+  "memory": {
+    "pruneChunks": true,
+    "keepChunks": 18,
+    "pruneEverySec": 5
+  },
+  "connection": {
+    "reconnectBaseSec": 15,
+    "reconnectMaxSec": 300,
+    "rateLimitCooldownSec": 45,
+    "captchaCooldownMin": 60
+  },
+  "status": {
+    "file": "status.json",
+    "intervalSec": 10
+  },
+  "log": {
+    "level": "info",
+    "format": "text",
+    "file": null
   },
   "discord": {
     "enabled": false,
     "token": "",
     "channelId": ""
-  },
-  "upload": {
-    "argusUrl": "https://map.argus.tools",
-    "token": "",
-    "label": "ARGUS Mapper"
   }
 }
